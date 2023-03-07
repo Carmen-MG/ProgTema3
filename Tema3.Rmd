@@ -383,7 +383,10 @@ datos_filtrados
 #Construcción del gráfico
 data1 <- ggplot(datos_filtrados, aes(x = date, y = new_deaths_smoothed_per_million, color = location)) +
               geom_line(size = 0.1) +
-              labs(title ='Gráfico de nuevas muertes en millones', x = 'Años', y = 'Nuevas muertes en millones') +
+              labs(title ='Gráfico de nuevas muertes en millones',
+                   subtitle = "Due to varying protocols and challenges in the attribution of the cause of death, the number of confirmed                                deaths may not accurately represent the true number of deaths caused by COVID-19",
+                   x = 'Años', y = 'Nuevas muertes en millones', 
+                   caption = "Source: Our Worl in Data (Johns Hopkins University CSSE COVID-19 Data)") +
               geom_line(data = filter(datos_filtrados, location == "Spain"), size = 0.3, col = "black") + 
               theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
               theme_classic()
