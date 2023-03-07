@@ -1,7 +1,7 @@
 ---
 title: "Tema 3"
 subtitle: Tratamiento de Datos. Grado en Ciencia de Datos- UV
-author: "Marcelino Martínez"
+author: "Grupo L"
 date:  "`r Sys.Date()`"  #Pondría la fecha del día actual
  
 params:
@@ -357,4 +357,22 @@ data(Salaries, package="carData")
                      title="Bubble Chart", size="Engine\nDisplacement")
         ggplotly(q)
         
+```
+
+```{r}
+#Cargar las librerías necesarias
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+#Cargar los datos del URL
+data <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+
+#Eliminar los NA
+data <- data[!is.na(data$new_deaths_smoothed_per_million), ]
+
+#Seleccionar los países
+paises <- c("Spain", "United States", "Italy", "Japan", "France", "Germany", "United Kingdom", "Japan", "Canada")
+
 ```
