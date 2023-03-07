@@ -367,7 +367,7 @@ library(ggplot2)
 library(plotly)
 
 #Cargar los datos del URL
-#data <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+data <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 
 #Eliminar los NA
 data <- data[!is.na(data$new_deaths_smoothed_per_million), ]
