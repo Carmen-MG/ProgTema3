@@ -375,4 +375,8 @@ data <- data[!is.na(data$new_deaths_smoothed_per_million), ]
 #Seleccionar los países
 paises <- c("Spain", "United States", "Italy", "Japan", "France", "Germany", "United Kingdom", "Japan", "Canada")
 
+#Filtrar los datos
+datos_filtrados <- data %>%
+  filter(location %in% paises)
+datos_filtrados
 ```
