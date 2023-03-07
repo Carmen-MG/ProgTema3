@@ -379,4 +379,14 @@ paises <- c("Spain", "United States", "Italy", "Japan", "France", "Germany", "Un
 datos_filtrados <- data %>%
   filter(location %in% paises)
 datos_filtrados
+
+#Construcción del gráfico
+data1 <- ggplot(datos_filtrados, aes(x = date, y = new_deaths_smoothed_per_million, color = location)) +
+              geom_line(size = 0.1) +
+              labs(title ='Gráfico de nuevas muertes en millones', x = 'Años', y = 'Nuevas muertes en millones') +
+              geom_line(data = filter(datos_filtrados, location == "Spain"), size = 0.3, col = "black") + 
+              theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+              theme_classic()
+data1
+
 ```
