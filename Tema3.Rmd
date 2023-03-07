@@ -390,9 +390,15 @@ data1 <- ggplot(datos_filtrados, aes(x = date, y = new_deaths_smoothed_per_milli
               geom_line(data = filter(datos_filtrados, location == "Spain"), size = 0.3, col = "black") + 
               expand_limits(y = 0) +
               theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
-              theme_classic()
+              theme_classic() +
+              theme(panel.grid.major.y = element_line(color = "gray",size = 0.1,linetype = 2))
 data1
 
 #Representar el gráfico interactivo
-ggplotly(data1)
+ggplotly(data1) %>%
+  layout(title = list(text = paste0('Gráfico de nuevas muertes en millones', #para que el subtítulo aparezca en el gráfico interactivo 
+                                    '<br>',                                     #se ha buscado e implementado esta función
+                                    '<sup>',
+                                    'Debido a la variación de los protocolos y a las dificultades en la atribución de la causa de la muerte,\n el número de muertes confirmadas puede no representar con exactitud el verdadero número de muertes causadas por COVID-19',
+                                    '</sup>')))
 ```
