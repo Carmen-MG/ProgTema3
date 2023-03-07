@@ -389,4 +389,6 @@ data1 <- ggplot(datos_filtrados, aes(x = date, y = new_deaths_smoothed_per_milli
               theme_classic()
 data1
 
+#Representar el gráfico interactivo
+ggplotly(data1)
 ```
