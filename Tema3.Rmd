@@ -367,7 +367,7 @@ library(ggplot2)
 library(plotly)
 
 #Cargar los datos del URL
-data <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+#data <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 
 #Eliminar los NA
 data <- data[!is.na(data$new_deaths_smoothed_per_million), ]
@@ -384,10 +384,11 @@ datos_filtrados
 data1 <- ggplot(datos_filtrados, aes(x = date, y = new_deaths_smoothed_per_million, color = location)) +
               geom_line(size = 0.1) +
               labs(title ='Gráfico de nuevas muertes en millones',
-                   subtitle = "Due to varying protocols and challenges in the attribution of the cause of death, the number of confirmed                                deaths may not accurately represent the true number of deaths caused by COVID-19",
+                   subtitle = "Debido a la variación de los protocolos y a las dificultades en la atribución de la causa de la muerte,\n el número de muertes confirmadas puede no representar con exactitud el verdadero número de muertes causadas por COVID-19",
                    x = 'Años', y = 'Nuevas muertes en millones', 
-                   caption = "Source: Our Worl in Data (Johns Hopkins University CSSE COVID-19 Data)") +
+                   caption = "Fuente: Our Worl in Data (Johns Hopkins University CSSE COVID-19 Data)") +
               geom_line(data = filter(datos_filtrados, location == "Spain"), size = 0.3, col = "black") + 
+              expand_limits(y = 0) +
               theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
               theme_classic()
 data1
